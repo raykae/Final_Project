@@ -35,7 +35,7 @@ def parse_args(arglist):
         arglist (list of str): command line arguments.
     
     Returns:
-        namespace: parsed arguments
+        namespace: polynomial, x1, x2, y1, y2.
     """
     parser = ArgumentParser()
     parser.add_argument("polynomial", type=str, help="coefficients separated by comma, start x^0")
