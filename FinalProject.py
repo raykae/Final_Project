@@ -20,8 +20,15 @@ class Polynomial:
         self.x = x
         self.y = y
         
+        
 
-def parse_arguments(arglist):
+def draw_plot(plot, polynomial):
+    pass        
+
+def main():
+    pass
+
+def parse_args(arglist):
     """Parse command line arguments.
     
     Args:
@@ -31,9 +38,13 @@ def parse_arguments(arglist):
         namespace: parsed arguments
     """
     parser = ArgumentParser()
-    parser.add_argument("polynomial", help="string of coefficients")
-    parser.add_argument("x1", help="x-axis left bound")
-    parser.add_argument("x2", help="x-axis right bound")
-    parser.add_argument("y1", help="y-axis lower bound")
-    parser.add_argument("y2", help="y-axis upper bound")
+    parser.add_argument("polynomial", type=str, help="coefficients separated by comma, start x^0")
+    parser.add_argument("x1", type=int, help="x-axis left bound")
+    parser.add_argument("x2", type=int, help="x-axis right bound")
+    parser.add_argument("y1", type=int, help="y-axis lower bound")
+    parser.add_argument("y2", type=int, help="y-axis upper bound")
     return parser.parse_args(arglist)
+
+if __name__ == "__main__":
+    args = parse_args(argv[1:])
+    main(args.polynomial, args.x1, args.x2, args.y1, args.y2)
