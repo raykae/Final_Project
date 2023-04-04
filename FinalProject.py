@@ -20,7 +20,8 @@ class Polynomial:
         self.x = x
         self.y = y
         
-        
+def slope_char(slope):
+    pass
 
 def draw_plot(plot, polynomial):
     pass        
