@@ -27,14 +27,10 @@ class Polynomial:
         Returns:
             float: The value of the polynomial at x.
         """
-        
-        
-        p = 0
-        i = 0
-        while i < len(self.coefficents):
-            p+= self.coefficents[i] * x ** i
-            i += 1
-        return p   
+        p = sum(self.coefficents[i] * x ** i for i in range(len(self.coefficents)))
+        return p if len(self.coefficents) > 0 else None
+
+
             
     def derivative(self):
         """
