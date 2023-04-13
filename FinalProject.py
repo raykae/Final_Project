@@ -6,20 +6,52 @@ from sys import argv
 class Polynomial: 
     """stores information about the polynomial and its derivative"""
     
-    def __init__(self,coefficents,x,y):
-        """Initalizing coefficents, x-interval and y-interval attributes
+    def __init__(self,coefficents):
+        """Initalizing coefficents of Polynomial object.
             
             Args:
                  coefficents(list): list of coefficents 
-                 x(tuple): values of x-interval 
-                 y(tuple): values of  y-interval
+                 
                  
         """
         
         self.coefficents = coefficents
-        self.x = x
-        self.y = y
         
+    def evaluate(self, x):
+        """
+        Evaluates the polynomial at the given x value.
+        
+        Args:
+            x (float): Given value to evaluate the polynomial.
+        
+        Returns:
+            float: The value of the polynomial at x.
+        """
+        
+        
+        p = 0
+        i = 0
+        while i < len(self.coeffs):
+            p+= self.coeffs[i] * x ** i
+            i += 1
+        return p   
+            
+        
+        
+    
+
+    
+    def derivative(self):
+        """
+        Returns a new Polynomial object that represents the derivative of the current polynomial.
+        
+        Returns:
+            Polynomial: The derivative of the current polynomial.
+        """
+        deriv_coeffs = [i * self.coeffs[i] for i in range(1, len(self.coeffs))]
+        return Polynomial(deriv_coeffs)
+
+
 def slope_char(slope):
     pass
 
