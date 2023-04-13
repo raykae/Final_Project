@@ -39,12 +39,12 @@ class Polynomial:
         Returns:
             Polynomial: The derivative of the current polynomial.
         """
-        deriv_coefficents = [i * self.coeffs[i] for i in range(1, len(self.coefficents))]
+        deriv_coefficents = [i * self.coefficents[i] for i in range(1, len(self.coefficents))]
         return Polynomial(deriv_coefficents)
 
 
 def slope_char(slope):
-    pass
+    passt
 
 def draw_plot(plot, polynomial):
     pass        
