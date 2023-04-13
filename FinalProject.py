@@ -31,16 +31,11 @@ class Polynomial:
         
         p = 0
         i = 0
-        while i < len(self.coeffs):
-            p+= self.coeffs[i] * x ** i
+        while i < len(self.coefficents):
+            p+= self.coefficents[i] * x ** i
             i += 1
         return p   
             
-        
-        
-    
-
-    
     def derivative(self):
         """
         Returns a new Polynomial object that represents the derivative of the current polynomial.
@@ -48,8 +43,8 @@ class Polynomial:
         Returns:
             Polynomial: The derivative of the current polynomial.
         """
-        deriv_coeffs = [i * self.coeffs[i] for i in range(1, len(self.coeffs))]
-        return Polynomial(deriv_coeffs)
+        deriv_coefficents = [i * self.coeffs[i] for i in range(1, len(self.coefficents))]
+        return Polynomial(deriv_coefficents)
 
 
 def slope_char(slope):
