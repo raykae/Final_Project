@@ -44,10 +44,31 @@ class Polynomial:
 
 
 def slope_char(slope):
-    passt
+    pass
 
-def draw_plot(plot, polynomial):
-    pass        
+def draw_plot(plot, polynomial: Polynomial, X, Y):
+    """Insert characters into a blank plot.
+    
+    Args:
+        plot (list of list of str): an empty two dimensional list, result of blank_plot.
+        polynomial (Polynomial): the polynomial to be plotted. 
+        X (tup of int): range for x values (inclusive).
+        Y (tup of int): range for y values (inclusive).
+    
+    Side effects:
+        Modifies plot by inserting characters.
+        
+    Returns:
+        list of list of str: the plotted function.
+    """
+    x1, x2 = X
+    y1, y2 = Y
+    for x in range(x1, x2 + 1):
+        y = polynomial.evaluate(x)
+        if y1 <= y and y <= y2:
+            char = slope_char(polynomial.derivative().evaluate(x))
+            plot[x - x1][y2 - y] = char
+    return plot
 
 def main():
     pass
