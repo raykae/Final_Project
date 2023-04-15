@@ -49,7 +49,7 @@ def slope_char(slope):
 def draw_plot(plot, polynomial: Polynomial, X, Y):
     """Insert characters into a blank plot.
     
-    Args:
+gi    Args:
         plot (list of list of str): an empty two dimensional list, result of blank_plot.
         polynomial (Polynomial): the polynomial to be plotted. 
         X (tup of int): range for x values (inclusive).
@@ -70,8 +70,29 @@ def draw_plot(plot, polynomial: Polynomial, X, Y):
             plot[x - x1][y2 - y] = char
     return plot
 
-def main():
-    pass
+def main(coords, polynomial):
+    # Parse command line arguments
+    x1, x2, y1, y2 = coords
+    
+    # Generate a blank plot
+    plot = blank_plot(x1, x2, y1, y2)
+    
+    # TODO: plot the polynomial on the plot
+    
+    # Print the plot
+    for row in plot:
+        print(''.join(row))
+        
+def blank_plot(x1, x2, y1, y2):
+    # Determine the dimensions of the plot
+    width = int(abs(x2 - x1) * 10) + 1
+    height = int(abs(y2 - y1) * 10) + 1
+    
+    # Create the blank plot
+    plot = [[' ' for _ in range(width)] for _ in range(height)]
+    
+    return plot
+    
 
 def parse_args(arglist):
     """Parse command line arguments.
