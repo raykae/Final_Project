@@ -43,21 +43,25 @@ class Polynomial:
         return Polynomial(deriv_coefficents)
 
 
-def slope_char(polynomial: Polynomial, X, Y):
+def slope_char(slope):
     """Takes the derivative and converts to a character.
 
     Args:
-        polynomial (Polynomial): the polynomial to be plotted. 
-        X (tup of int): range for x values (inclusive).
-        Y (tup of int): range for y values (inclusive).
+        slope(int): given slope at a point in a graph 
+
+    Returns:
+        character that the derivative value corresponds to
     """
-    x1, x2 = X
-    if X <= 0:
+    if slope >= -0.5 and slope <= 0.5:
         return "-"
-    if X > 0 < 10:
+    if slope > 0.5 and slope < 3:
         return "/"
-    if X > 10: 
+    if slope < -0.5 and slope >= -3:
+        return " \ "
+    else:
         return "|"
+     
+
 
 
 def draw_plot(plot, polynomial: Polynomial, X, Y):
