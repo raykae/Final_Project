@@ -43,7 +43,12 @@ class Polynomial:
         return Polynomial(deriv_coefficents)
 
 
-def slope_char(slope):
+def slope_char(Polynomial, X, Y, plot):
+    """Takes the derivative and converts to a character.
+
+    Args:
+
+    """
     pass
 
 def draw_plot(plot, polynomial: Polynomial, X, Y):
