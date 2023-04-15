@@ -43,11 +43,13 @@ class Polynomial:
         return Polynomial(deriv_coefficents)
 
 
-def slope_char(Polynomial, X, Y, plot):
+def slope_char(polynomial: Polynomial, X, Y):
     """Takes the derivative and converts to a character.
 
     Args:
-
+        polynomial (Polynomial): the polynomial to be plotted. 
+        X (tup of int): range for x values (inclusive).
+        Y (tup of int): range for y values (inclusive).
     """
     pass
 
