@@ -51,12 +51,19 @@ def slope_char(polynomial: Polynomial, X, Y):
         X (tup of int): range for x values (inclusive).
         Y (tup of int): range for y values (inclusive).
     """
-    pass
+    x1, x2 = X
+    if X <= 0:
+        return "-"
+    if X > 0 < 10:
+        return "/"
+    if X > 10: 
+        return "|"
+
 
 def draw_plot(plot, polynomial: Polynomial, X, Y):
     """Insert characters into a blank plot.
     
-gi    Args:
+    Args:
         plot (list of list of str): an empty two dimensional list, result of blank_plot.
         polynomial (Polynomial): the polynomial to be plotted. 
         X (tup of int): range for x values (inclusive).
