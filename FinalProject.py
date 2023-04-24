@@ -85,7 +85,7 @@ def draw_plot(plot, polynomial: Polynomial, X, Y):
         y = polynomial.evaluate(x)
         if y1 <= y and y <= y2:
             char = slope_char(polynomial.derivative().evaluate(x))
-            plot[x - x1][y2 - y] = char
+            plot[y2 - int(y)][int(x) - x1] = char
     return plot
 
 def main(coords, polynomial):
