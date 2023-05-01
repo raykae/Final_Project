@@ -90,18 +90,27 @@ def draw_plot(plot, polynomial: Polynomial, X, Y):
             plot[y2 - int(y)][int(x) - x1] = char
     return plot
 
-def main(coords, polynomial):
+def main(polynomial, coords):
     # Parse command line arguments
     x1, x2, y1, y2 = coords
     
+    plist = polynomial.split(",")
+    plist = [float(c) for c in plist]
+    p = Polynomial(plist)
+    
     # Generate a blank plot
     plot = blank_plot(x1, x2, y1, y2)
+    plot = draw_plot(plot, p, (x1, x2), (y1, y2))
     
     # TODO: plot the polynomial on the plot
     
     # Print the plot
     for row in plot:
-        print(''.join(row))
+        # print(''.join(row))
+        r = ""
+        for c in row:
+            r += " " + c
+        print(r)   
         
 def blank_plot(x1, x2, y1, y2):
     # Determine the dimensions of the plot
