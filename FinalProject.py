@@ -42,6 +42,9 @@ class Polynomial:
         deriv_coefficents = [i * self.coefficents[i] for i in range(1, len(self.coefficents))]
         return Polynomial(deriv_coefficents) if len(deriv_coefficents) >= 1 else Polynomial([0])
 
+def values_at(self, x):
+    pass 
+
 def slope_char(slope):
     """Takes the derivative and converts to a character.
 
