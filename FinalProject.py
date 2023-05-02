@@ -142,4 +142,4 @@ def parse_args(arglist):
 
 if __name__ == "__main__":
     args = parse_args(argv[1:])
-    main(args.polynomial, args.x1, args.x2, args.y1, args.y2)
+    main(args.polynomial, (args.x1, args.x2, args.y1, args.y2))
