@@ -114,8 +114,8 @@ def main(polynomial, coords):
         
 def blank_plot(x1, x2, y1, y2):
     # Determine the dimensions of the plot
-    width = int(abs(x2 - x1) * 10) + 1
-    height = int(abs(y2 - y1) * 10) + 1
+    width = int(abs(x2 - x1)) + 1
+    height = int(abs(y2 - y1)) + 1
     
     # Create the blank plot
     plot = [[' ' for _ in range(width)] for _ in range(height)]
