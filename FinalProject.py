@@ -100,9 +100,9 @@ def draw_plot(plot, polynomial: Polynomial, X, Y, offset=0):
     x1, x2 = X
     y1, y2 = Y
     for x in range(x1, x2 + 1):
-        y = polynomial.evaluate(x - offset)
+        y = polynomial(x - offset)
         if y1 <= y and y <= y2:
-            char = slope_char(polynomial.derivative().evaluate(x - offset))
+            char = slope_char(polynomial.derivative()(x - offset))
             plot[y2 - int(y)][int(x) - x1] = char
     return plot
 
