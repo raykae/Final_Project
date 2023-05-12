@@ -82,13 +82,14 @@ def display_plot(plot, choice = "print1"):
 
 
 def draw_plot(plot, polynomial: Polynomial, X, Y, offset=0):
-    """Insert characters into a blank plot.
+    """Insert characters into a plot. Plot may or may not be blank.
     
     Args:
         plot (list of list of str): an empty two dimensional list, result of blank_plot.
         polynomial (Polynomial): the polynomial to be plotted. 
         X (tup of int): range for x values (inclusive).
         Y (tup of int): range for y values (inclusive).
+        offset (float): offset for x values.
     
     Side effects:
         Modifies plot by inserting characters.
@@ -106,7 +107,15 @@ def draw_plot(plot, polynomial: Polynomial, X, Y, offset=0):
     return plot
 
 def get_sin(freq, amplitude, neg=1):
-    """Generates list of coefficients for sin approximation
+    """Generates Polynomial with coefficients for a sine approximation.
+    
+    Args:
+        freq (float): frequency of the sine wave.
+        amplitude (float): amplitude of the sine wave.
+        neg (int): 1 or -1, reverses the wave on the x-axis.
+        
+    Returns:
+        Polynomial: a polynomial approximation for a sine wave.
     """
     # odd
     max_degree = 91
@@ -121,7 +130,10 @@ def get_sin(freq, amplitude, neg=1):
     return Polynomial(l)
 
 def scale():
-    """Makes animation, use -a
+    """Displays sine wave animation. (Use -a, other args don't matter but must be present.)
+    
+    Side effects:
+        Prints multiple plots on the command line.
     """
     r = list(range(30))
     x1 = -18
