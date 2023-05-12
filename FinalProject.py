@@ -34,11 +34,6 @@ class Polynomial:
         p = sum(self.coefficents[i] * x ** i for i in range(len(self.coefficents)))
         return p if len(self.coefficents) > 0 else None
 
-        
-        
-        
-
-
             
     def derivative(self):
         """
@@ -53,8 +48,6 @@ class Polynomial:
         return Polynomial(deriv_coefficents) if len(deriv_coefficents) >= 1 \
         else Polynomial([0])
 
-def values_at(self, x):
-    pass 
 
 def slope_char(slope):
     """Takes the derivative and converts to a character.
