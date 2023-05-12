@@ -20,7 +20,7 @@ To write to a file instead of printing, use the -f / --file option. The file sho
 
 `py FinalProject.py "0,3,-1,0,4" -10 10 -5 5 -f`
 
-There is also an option to display an animation of sine waves in their approximate polynomial form, -a / --animate. In this case polynomial and window must be present but do not influence what is displayed.
+There is also an option to display an animation of sine waves in their approximate polynomial form, -a / --animate. In this case polynomial and window must be present but do not influence what is displayed. If the animation does not appear smooth, ensure the console window is large enough to display the entire plot.
 
 `py FinalProject.py "0" 0 0 0 0 -a`
 
