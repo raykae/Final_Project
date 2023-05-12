@@ -1,6 +1,6 @@
 # Final_Project
-INST326 Final Project
-    Members: Andrew, Bemenet, Diwash , Rachael
+INST326 Final Project  
+Members: Andrew, Bemenet, Diwash, Rachael
 
 # **Polynomial Plotter**
 
