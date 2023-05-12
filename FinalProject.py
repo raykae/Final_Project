@@ -199,7 +199,6 @@ def main(polynomial, coords, animate=False, file=False):
     plot = blank_plot(x1, x2, y1, y2)
     plot = draw_plot(plot, p, (x1, x2), (y1, y2))
     
-    # TODO: plot the polynomial on the plot
     display_plot(plot, file)
         
 def blank_plot(x1, x2, y1, y2):
