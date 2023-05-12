@@ -17,9 +17,9 @@ class Polynomial:
         
         self.coefficents = coefficents
         
-    def evaluate(self, x):
+    def __call__(self, x):
         """
-        Evaluates the polynomial at the given x value.
+        Call the polynomial at the given x value.
         
         Args:
             x (float): Given value to evaluate the polynomial.
