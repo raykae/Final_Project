@@ -27,8 +27,14 @@ class Polynomial:
         Returns:
             float: The value of the polynomial at x.
         """
+        
+        
         p = sum(self.coefficents[i] * x ** i for i in range(len(self.coefficents)))
         return p if len(self.coefficents) > 0 else None
+
+        
+        
+        
 
 
             
@@ -39,8 +45,11 @@ class Polynomial:
         Returns:
             Polynomial: The derivative of the current polynomial.
         """
-        deriv_coefficents = [i * self.coefficents[i] for i in range(1, len(self.coefficents))]
-        return Polynomial(deriv_coefficents) if len(deriv_coefficents) >= 1 else Polynomial([0])
+        deriv_coefficents = []
+        for i in range(1, len(self.coefficents)):
+            deriv_coefficents.append(i * self.coefficents[i])
+        return Polynomial(deriv_coefficents) if len(deriv_coefficents) >= 1 \
+        else Polynomial([0])
 
 def values_at(self, x):
     pass 
@@ -142,4 +151,4 @@ def parse_args(arglist):
 
 if __name__ == "__main__":
     args = parse_args(argv[1:])
-    main(args.polynomial, args.x1, args.x2, args.y1, args.y2)
+    main(args.polynomial, (args.x1, args.x2, args.y1, args.y2))
