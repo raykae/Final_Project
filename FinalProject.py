@@ -142,17 +142,13 @@ def scale():
     y2 = 13
     amp = 12
     num_curves = 5
-    
     slides = []
     offsetlist = []
     
-    
     coeflist = [n*0.01 for n in r]
-    framelen = len(coeflist)
     framelen = len(coeflist)
     
     for e in coeflist:
-        
         offsetlist.append((15*e)**2)
         rev = 1
         plist = []
@@ -169,7 +165,6 @@ def scale():
     
     slidelen = len(slides)
 
-    
     for t in range(33):
         i = 0
         for e in range(framelen*4):
@@ -187,10 +182,7 @@ def scale():
             
             os.system("cls||clear")
             for row in plot:
-                rw = ""
-                for c in row:
-                    rw += " " + c
-                print(rw)
+                print(" ".join(row))
 
 def main(polynomial, coords, animate=False, file=False):
     if animate:
