@@ -2,6 +2,8 @@
 
 from argparse import ArgumentParser
 from sys import argv
+import math
+import os
 
 class Polynomial: 
     """stores information about the polynomial and its derivative"""
@@ -86,7 +88,7 @@ def display_plot(plot, choice = "print1"):
 
 
 
-def draw_plot(plot, polynomial: Polynomial, X, Y):
+def draw_plot(plot, polynomial: Polynomial, X, Y, offset=0):
     """Insert characters into a blank plot.
     
     Args:
@@ -104,13 +106,88 @@ def draw_plot(plot, polynomial: Polynomial, X, Y):
     x1, x2 = X
     y1, y2 = Y
     for x in range(x1, x2 + 1):
-        y = polynomial.evaluate(x)
+        y = polynomial.evaluate(x - offset)
         if y1 <= y and y <= y2:
-            char = slope_char(polynomial.derivative().evaluate(x))
+            char = slope_char(polynomial.derivative().evaluate(x - offset))
             plot[y2 - int(y)][int(x) - x1] = char
     return plot
 
-def main(polynomial, coords):
+def get_sin(freq, amplitude, neg=1):
+    """Generates list of coefficients for sin approximation
+    """
+    # odd
+    max_degree = 91
+    sign = 1*neg
+    l = []
+    for degree in range(max_degree):
+        if degree % 2 == 1:
+            l.append(float(sign*amplitude*freq**degree/math.factorial(degree)))
+            sign *= -1
+        else:
+            l.append(float(0))
+    return Polynomial(l)
+
+def scale():
+    """Makes animation, use -a
+    """
+    r = list(range(30))
+    x1 = -18
+    x2 = 18
+    y1 = -13
+    y2 = 13
+    amp = 12
+    num_curves = 5
+    
+    slides = []
+    offsetlist = []
+    
+    
+    coeflist = [n*0.01 for n in r]
+    framelen = len(coeflist)
+    framelen = len(coeflist)
+    
+    for e in coeflist:
+        
+        offsetlist.append((15*e)**2)
+        rev = 1
+        plist = []
+        for i in [(num_curves - i)/num_curves for i in range(num_curves) for _ in (0,1)]:
+            plist.append(get_sin(e, amp*i, rev))
+            rev *= -1
+        slides.append(plist)
+    
+    slides += slides[::-1]
+    slides += slides
+    
+    offsetlist += offsetlist[::-1]
+    offsetlist += offsetlist
+    
+    slidelen = len(slides)
+
+    
+    for t in range(33):
+        i = 0
+        for e in range(framelen*4):
+            plot = blank_plot(x1,x2,y1,y2)
+            
+            curr_plots = slides[i]
+            for p in curr_plots:
+                if i > slidelen/2:
+                    plot = draw_plot(plot, p, (x1, x2), (y1, y2), offsetlist[i])
+                else:
+                    plot = draw_plot(plot, p, (x1, x2), (y1, y2), -offsetlist[i])
+            i += 1
+            if i >= slidelen:
+                i = 0
+            
+            os.system("cls||clear")
+            for row in plot:
+                rw = ""
+                for c in row:
+                    rw += " " + c
+                print(rw)
+
+def main(polynomial, coords, animate=False, file=False):
     # Parse command line arguments
     x1, x2, y1, y2 = coords
     
@@ -123,7 +200,7 @@ def main(polynomial, coords):
     plot = draw_plot(plot, p, (x1, x2), (y1, y2))
     
     # TODO: plot the polynomial on the plot
-    display_plot(plot)
+    display_plot(plot, file)
         
 def blank_plot(x1, x2, y1, y2):
     # Determine the dimensions of the plot
@@ -151,8 +228,10 @@ def parse_args(arglist):
     parser.add_argument("x2", type=int, help="x-axis right bound")
     parser.add_argument("y1", type=int, help="y-axis lower bound")
     parser.add_argument("y2", type=int, help="y-axis upper bound")
+    parser.add_argument("-a", "--animate", action="store_true")
+    parser.add_argument("-f", "--file", action="store_true")
     return parser.parse_args(arglist)
 
 if __name__ == "__main__":
     args = parse_args(argv[1:])
-    main(args.polynomial, (args.x1, args.x2, args.y1, args.y2))
+    main(args.polynomial, (args.x1, args.x2, args.y1, args.y2), args.animate, args.file)
