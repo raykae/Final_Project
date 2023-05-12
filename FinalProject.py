@@ -193,6 +193,9 @@ def scale():
                 print(rw)
 
 def main(polynomial, coords, animate=False, file=False):
+    if animate:
+        scale()
+        return
     # Parse command line arguments
     x1, x2, y1, y2 = coords
     
