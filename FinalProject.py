@@ -72,6 +72,17 @@ def slope_char(slope):
     else:
         return "|"
      
+def display_plot(plot, choice = "print1"):
+    for row in plot:
+        # print(''.join(row))
+        r = ""
+        for c in row:
+            r += " " + c
+    if choice == "print1":
+        print(r) 
+    else:
+        with open("blankfile.txt", "w") as file:
+            file.write(r)
 
 
 
@@ -112,14 +123,7 @@ def main(polynomial, coords):
     plot = draw_plot(plot, p, (x1, x2), (y1, y2))
     
     # TODO: plot the polynomial on the plot
-    
-    # Print the plot
-    for row in plot:
-        # print(''.join(row))
-        r = ""
-        for c in row:
-            r += " " + c
-        print(r)   
+    display_plot(plot)
         
 def blank_plot(x1, x2, y1, y2):
     # Determine the dimensions of the plot
