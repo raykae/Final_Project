@@ -185,30 +185,54 @@ def scale():
                 print(" ".join(row))
 
 def main(polynomial, coords, animate=False, file=False):
+    """
+    Generates a plot of a polynomial function and displays it or saves it to a file.
+
+    Args:
+        polynomial (str): A string representation of the polynomial coefficients separated by commas.
+        coords (tuple): A tuple containing the coordinates of the plot area in the form (x1, x2, y1, y2).
+        animate (bool, optional): If True, scales the plot and returns without displaying or saving. Defaults to False.
+        file (bool, optional): If True, saves the plot to a file. Defaults to False.
+
+    Returns:
+        None
+    """
     if animate:
         scale()
         return
-    # Parse command line arguments
+
     x1, x2, y1, y2 = coords
-    
+
     plist = polynomial.split(",")
     plist = [float(c) for c in plist]
     p = Polynomial(plist)
-    
-    # Generate a blank plot
+
     plot = blank_plot(x1, x2, y1, y2)
     plot = draw_plot(plot, p, (x1, x2), (y1, y2))
-    
+
     display_plot(plot, file)
+
         
 def blank_plot(x1, x2, y1, y2):
+    """
+    Generates a blank plot with the specified dimensions.
+
+    Args:
+        x1 (float): The leftmost x-coordinate of the plot.
+        x2 (float): The rightmost x-coordinate of the plot.
+        y1 (float): The bottommost y-coordinate of the plot.
+        y2 (float): The topmost y-coordinate of the plot.
+
+    Returns:
+        list: A 2D list representing the blank plot.
+    """
     width = int(abs(x2 - x1)) + 1
     height = int(abs(y2 - y1)) + 1
-    
+
     plot = [[' ' for _ in range(width)] for _ in range(height)]
-    
+
     return plot
-    
+
 
 def parse_args(arglist):
     """Parse command line arguments.
