@@ -63,7 +63,7 @@ def slope_char(slope):
     if slope > 0.5 and slope < 3:
         return "/"
     if slope < -0.5 and slope >= -3:
-        return " \ "
+        return "\\"
     else:
         return "|"
      
@@ -88,10 +88,9 @@ def display_plot(plot, write = False):
     else:
         for row in plot:
             formatted_row = ""
-            print(''.join(row))
             for line_char in row:
                 formatted_row += f" {line_char}"
-        
+            print(formatted_row)
         
 
 
