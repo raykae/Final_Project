@@ -6,15 +6,17 @@ import math
 import os
 
 class Polynomial: 
-    """stores information about the polynomial and its derivative"""
+    """Stores information about the polynomial and its derivative
+    
+    Attributes: 
+        coefficents (list of float): list of coefficents 
+    """
     
     def __init__(self,coefficents):
         """Initalizing coefficents of Polynomial object.
             
             Args:
-                 coefficents(list): list of coefficents 
-                 
-                 
+                 coefficents (list of float): list of coefficents 
         """
         
         self.coefficents = coefficents
@@ -29,8 +31,6 @@ class Polynomial:
         Returns:
             float: The value of the polynomial at x.
         """
-        
-        
         p = sum(self.coefficents[i] * x ** i for i in range(len(self.coefficents)))
         return p if len(self.coefficents) > 0 else None
 
@@ -53,14 +53,14 @@ def slope_char(slope):
     """Takes the derivative and converts to a character.
 
     Args:
-        slope(int): given slope at a point in a graph 
+        slope (int): given slope at a point in a graph 
 
     Returns:
-        character that the derivative value corresponds to
+        string: character that the derivative value corresponds to
     """
     if slope >= -0.5 and slope <= 0.5:
         return "-"
-    if slope > 0.5 and slope < 3:
+    if slope > 0.5 and slope <= 3:
         return "/"
     if slope < -0.5 and slope >= -3:
         return "\\"
@@ -72,11 +72,10 @@ def display_plot(plot, write = False):
 
     Args:
         plot (list of list of str): an empty two dimensional list, result of blank_plot
-        write(txt)
+        write (boolean): option to write to blankfile.txt
 
-    Prints:
-        the plot in the terminal or writes it to the file. 
-
+    Side effects:
+        Prints the plot in the terminal or writes it to the file. 
     """
     if write:
         with open("blankfile.txt", "w") as file:
@@ -91,9 +90,6 @@ def display_plot(plot, write = False):
             for line_char in row:
                 formatted_row += f" {line_char}"
             print(formatted_row)
-        
-
-
 
 def draw_plot(plot, polynomial: Polynomial, X, Y, offset=0):
     """Insert characters into a plot. Plot may or may not be blank.
@@ -144,8 +140,8 @@ def get_sin(freq, amplitude, neg=1):
     return Polynomial(l)
 
 def scale():
-    """Displays sine wave animation. (Use -a, other args don't matter but must be present.)
-    
+    """Displays sine wave animation.
+        
     Side effects:
         Prints multiple plots on the command line.
     """
