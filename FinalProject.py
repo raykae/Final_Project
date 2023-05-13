@@ -67,17 +67,32 @@ def slope_char(slope):
     else:
         return "|"
      
-def display_plot(plot, choice = "print1"):
-    for row in plot:
-        # print(''.join(row))
-        r = ""
-        for c in row:
-            r += " " + c
-    if choice == "print1":
-        print(r) 
-    else:
+def display_plot(plot, write = False):
+    """Takes the plot as an argument and prints or writes it to a file.
+
+    Args:
+        plot (list of list of str): an empty two dimensional list, result of blank_plot
+        write(txt)
+
+    Prints:
+        the plot in the terminal or writes it to the file. 
+
+    """
+    if write:
         with open("blankfile.txt", "w") as file:
-            file.write(r)
+            for row in plot:
+                formatted_row = ""
+                for line_char in row:
+                    formatted_row += f" {line_char}"
+                file.write(f"{formatted_row}\n")
+    else:
+        for row in plot:
+            formatted_row = ""
+            print(''.join(row))
+            for line_char in row:
+                formatted_row += f" {line_char}"
+        
+        
 
 
 
