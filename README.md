@@ -24,6 +24,8 @@ There is also an option to display an animation of sine waves in their approxima
 
 `py FinalProject.py "0" 0 0 0 0 -a`
 
+"I plotted something and it doesn't look like I expected. Why?" Our plotter works by iterating over each x value in the window, and checks if the resulting y value is in the window. This means that lines with very steep slopes, for example, f(x) = 20x on x=[-10,10], y=[-10, 10] will only display a single vertical character at (0, 0). The points (-1, -20) and (1, 20) are in not in the window and thus are not displayed. Similarly, f(x) = 9x will only have three visible characters on the same window. In summary, the "density" of a line can vary as the slope changes.
+
 ## Table of Functions and Techniques
 
 | Function/Method | Team Member | Technique |
